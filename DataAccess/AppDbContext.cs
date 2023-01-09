@@ -10,9 +10,11 @@ namespace DataAccess
     public class AppDbContext
     {
         public static List<Status> Statuses { get; set; }
+        public static List<User> Users { get; set; }
         public AppDbContext()
         {
             Statuses = new List<Status>();
+            Users = new List<User>();
         }
     }
 }

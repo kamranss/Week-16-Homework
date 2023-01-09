@@ -66,7 +66,21 @@ namespace DataAccess.Repositories
 
         public bool Update(Status entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Status foundStatus = Get(sts => sts.id == entity.id);
+                if (foundStatus != null)
+                {
+                    foundStatus = entity;
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

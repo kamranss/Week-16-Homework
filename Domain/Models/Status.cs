@@ -11,13 +11,16 @@ namespace Domain.Models
     {
         public string Title { get; set; }
         public string Content { get; set; }
-        public DateTime SharedDate { get; set; }
-        public int StatusId { get; set; }
-        public int? id { get; set; }
+        public DateTime SharedDate { get; set; } = DateTime.Now;
+        //public int UserId { get; set; }
+        public User User { get; set; }
+        public int? Id { get; set; }
 
         public void GetStatusInfo()
         {
-
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($" Id - {Id} | Title - {Title} | Content - {SharedDate} | User_Name {User.Username} | User_Id - {User.id} ");
+            Console.ResetColor();
         }
     }
 }
