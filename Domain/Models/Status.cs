@@ -12,9 +12,10 @@ namespace Domain.Models
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime SharedDate { get; set; }
+        public int StatusId { get; set; }
+        public int? id { get; set; }
 
-
-       public void GetStatusInfo()
+        public void GetStatusInfo()
         {
 
         }

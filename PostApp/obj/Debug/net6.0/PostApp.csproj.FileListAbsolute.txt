@@ -1,0 +1,15 @@
+C:\Users\kamra\source\repos\PostApp\PostApp\bin\Debug\net6.0\PostApp.exe
+C:\Users\kamra\source\repos\PostApp\PostApp\bin\Debug\net6.0\PostApp.deps.json
+C:\Users\kamra\source\repos\PostApp\PostApp\bin\Debug\net6.0\PostApp.runtimeconfig.json
+C:\Users\kamra\source\repos\PostApp\PostApp\bin\Debug\net6.0\PostApp.dll
+C:\Users\kamra\source\repos\PostApp\PostApp\bin\Debug\net6.0\PostApp.pdb
+C:\Users\kamra\source\repos\PostApp\PostApp\obj\Debug\net6.0\PostApp.csproj.AssemblyReference.cache
+C:\Users\kamra\source\repos\PostApp\PostApp\obj\Debug\net6.0\PostApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kamra\source\repos\PostApp\PostApp\obj\Debug\net6.0\PostApp.AssemblyInfoInputs.cache
+C:\Users\kamra\source\repos\PostApp\PostApp\obj\Debug\net6.0\PostApp.AssemblyInfo.cs
+C:\Users\kamra\source\repos\PostApp\PostApp\obj\Debug\net6.0\PostApp.csproj.CoreCompileInputs.cache
+C:\Users\kamra\source\repos\PostApp\PostApp\obj\Debug\net6.0\PostApp.dll
+C:\Users\kamra\source\repos\PostApp\PostApp\obj\Debug\net6.0\refint\PostApp.dll
+C:\Users\kamra\source\repos\PostApp\PostApp\obj\Debug\net6.0\PostApp.pdb
+C:\Users\kamra\source\repos\PostApp\PostApp\obj\Debug\net6.0\PostApp.genruntimeconfig.cache
+C:\Users\kamra\source\repos\PostApp\PostApp\obj\Debug\net6.0\ref\PostApp.dll

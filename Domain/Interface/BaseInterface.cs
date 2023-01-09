@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Interface
 {
-    internal class BaseInterface
+    public interface BaseInterface
     {
+        public int? id { get; set; }
     }
 }
