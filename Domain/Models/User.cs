@@ -9,8 +9,13 @@ namespace Domain.Models
 {
     public class User:BaseInterface
     {
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public int Age { get; set; }
+        public string EmailAddress { get; set; }
         public string Username { get; set; }
-        public int? id { get ; set ; }
+        
+        public int? Id { get ; set ; }
 
         public void ShareStatus()
         {
