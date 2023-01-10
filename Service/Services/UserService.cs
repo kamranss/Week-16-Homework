@@ -12,6 +12,7 @@ namespace Service.Services
     public class UserService : IUserService
     {
         private readonly UserRepository userRepository;
+        public static int Id { get; set; } = 1;
         public UserService()
         {
             userRepository = new UserRepository();
@@ -22,8 +23,12 @@ namespace Service.Services
             {
                 if (user.Username != null)
                 {
-                    userRepository.Create(user);
-                    return user;
+                    user.Id = Id;
+                    if (userRepository.Create(user))
+                    {
+                        Id++;
+                        return user;
+                    }
                 }
                 return null;
 

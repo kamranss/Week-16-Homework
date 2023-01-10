@@ -13,6 +13,7 @@ namespace Service.Services
     {
         private readonly StatusRepository statusRepository;
         private readonly UserRepository userRepository;
+        public static int Id { get; set; } = 1;
 
         public StatusService()
         {
@@ -25,7 +26,12 @@ namespace Service.Services
             {
                 if (status.Title != null && status.Content != null && status.User !=null )
                 {
-                    statusRepository.Create(status);
+                    status.Id = Id;
+                    if (statusRepository.Create(status))
+                    {
+                        Id++;
+                        return status;                       
+                    }                   
                     return status;
                 }
                 return null;
@@ -128,14 +134,15 @@ namespace Service.Services
             }
         }
 
-        public List<Status> GetSbySharedDate(DateTime dateTime)
+
+        public List<Status> GetStatusesBySharedDate(DateTime dateTime)
         {
             try
             {
-                List<Status> status = statusRepository.GetAll(st => st.SharedDate >= dateTime);
-                if (status != null)
+                List<Status> statuses = statusRepository.GetAll(st => st.SharedDate >= dateTime);
+                if (statuses != null)
                 {
-                    return status;
+                    return statuses;
                 }
                 return null;
             }
@@ -146,14 +153,23 @@ namespace Service.Services
             }
         }
 
-        public List<Status> GetStatusesBySharedDate(DateTime dateTime)
+        public Status Update(Status status, int id)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                Status foundstatus = statusRepository.Get(s => s.Id == id);
+                if (foundstatus != null)
+                {
+                    foundstatus = status;
+                    return status;
+                }
+                return null;
+            }
+            catch (Exception)
+            {
 
-        public Status Update(Status status)
-        {
-            throw new NotImplementedException();
+                throw;
+            }
         }
     }
 }
