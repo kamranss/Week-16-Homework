@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities.Helper.Enums;
 
 namespace Service.Services
 {
@@ -41,7 +42,7 @@ namespace Service.Services
         {
             switch (role)
             {
-                case (int)Roles.SuperAdmin:
+                case (int).Enums
                     return true;
                 default:
                     return false;

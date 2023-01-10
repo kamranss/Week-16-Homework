@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Utilities.Helper
 {
-    internal class ConsoleMessages
+    internal class ConstantRoles
     {
     }
 }

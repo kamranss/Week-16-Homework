@@ -134,7 +134,6 @@ namespace Service.Services
             }
         }
 
-
         public List<Status> GetStatusesBySharedDate(DateTime dateTime)
         {
             try
@@ -162,6 +161,23 @@ namespace Service.Services
                 {
                     foundstatus = status;
                     return status;
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public List<Status> GetStatusesByUserId(int id)
+        {
+            try
+            {
+                List<Status> statuses = statusRepository.GetAll(st => st.User.Id == id);
+                if (statuses != null)
+                {
+                    return statuses;
                 }
                 return null;
             }
