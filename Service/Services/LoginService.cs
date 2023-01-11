@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities.Helper;
 using Utilities.Helper.Enums;
 
 namespace Service.Services
@@ -23,9 +24,10 @@ namespace Service.Services
             User user = userRepository.Get(u => u.Username == username && u.Password == password);
             if (user != null)
             {
-                if (CheckRole(role))
+                if (CheckRole(user.Role))
                 {
-                    return AccountContans.SuperAdminValidEntrance;
+                    Console.WriteLine(ConsoleMessages.AccessGranted); 
+                    return true; ;
                 }
                 else
                 {
@@ -38,15 +40,13 @@ namespace Service.Services
             }
         }
 
-        private bool CheckRole(int role)
+        private bool CheckRole(string role)
         {
-            switch (role)
+            if (role  == ConstantRoles.Admin)
             {
-                case (int).Enums
-                    return true;
-                default:
-                    return false;
+                return true;
             }
+            return false;
         }
     }
     }

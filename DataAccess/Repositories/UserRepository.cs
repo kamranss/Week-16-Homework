@@ -27,23 +27,61 @@ namespace DataAccess.Repositories
 
         public bool Delete(User entity)
         {
-            AppDbContext.Users.Remove(entity);
-            return true;
+            try
+            {
+                AppDbContext.Users.Remove(entity);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public User Get(Predicate<User> filter = null)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return filter != null ? AppDbContext.Users.Find(filter) : AppDbContext.Users[0];
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<User> GetAll(Predicate<User> filter = null)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return filter != null ? AppDbContext.Users.FindAll(filter) : AppDbContext.Users;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool Update(User entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                User founduser = Get(us => us.Id == entity.Id);
+                if (founduser != null)
+                {
+                    founduser = entity;
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

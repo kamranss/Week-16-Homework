@@ -30,6 +30,9 @@
             "projectReferences": {
               "C:\\Users\\kamra\\source\\repos\\PostApp\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\kamra\\source\\repos\\PostApp\\Domain\\Domain.csproj"
+              },
+              "C:\\Users\\kamra\\source\\repos\\PostApp\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\kamra\\source\\repos\\PostApp\\Utilities\\Utilities.csproj"
               }
             }
           }

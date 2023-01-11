@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Utilities.Helper
 {
-    internal class ConstantRoles
+    public static class ConstantRoles
     {
+        #region Roles
+        public const string Admin = "Admin";
+        public const string DataBaseAdmin = "DataBaseAdmin";
+        public const string User = "User";
+        #endregion
     }
 }

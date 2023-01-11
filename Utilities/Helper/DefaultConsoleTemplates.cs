@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Utilities.Helper
 {
-    public class DefaultConsoleTemplate
+    public class DefaultConsoleTemplates
     {
         public static void ConsoleTemplate(ConsoleColor coler1, string message)
         {
@@ -15,6 +15,13 @@ namespace Utilities.Helper
             Console.WriteLine(message);
             Console.ResetColor();
 
+        }
+
+        public static void MenuOption()
+        {
+            string menuoption = Console.ReadLine();
+            int selectedbutton;
+            bool selection = int.TryParse(menuoption, out selectedbutton);
         }
     }
 }
