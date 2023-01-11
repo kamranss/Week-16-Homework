@@ -21,16 +21,22 @@ namespace Service.Services
         {
             try
             {
-                if (user.Username != null)
+                User findUser = userRepository.Get(u => u.Username.ToLower() == user.Username.ToLower() || u.EmailAddress == user.EmailAddress);
+                if (findUser == null)
                 {
-                    user.Id = Id;
-                    if (userRepository.Create(user))
+                    if (user.Username != null && user.Password != null)
                     {
-                        Id++;
-                        return user;
+                        user.Id = Id;
+                        if (userRepository.Create(user))
+                        {
+                            Id++;
+                            return user;
+                        }
                     }
+                    return null;
                 }
                 return null;
+                
 
             }
             catch (Exception)

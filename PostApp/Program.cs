@@ -13,13 +13,14 @@ StatusController statusController = new StatusController();
 
 
 bool whileresult = true;
-DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "In oder to access system you should provide credentials");
+DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "In oder to access system you should provide credentials:");
 string role = loginController.LoginToSystem();
 if (role != null)
 {
     if (loginController.CheckUserkRole(role))
     {
-        DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkBlue, ConsoleMessages.Options);
+        DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkBlue, ConsoleMessages.ChooseOption);
+        DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White, ConsoleMessages.OptionsForAdmin);
         string menuoption = Console.ReadLine();
         int selectedbutton;
         bool selection = int.TryParse(menuoption, out selectedbutton);
@@ -27,8 +28,10 @@ if (role != null)
         {
             switch (selectedbutton)
             {
-                case (int)Enums.MenuOptionsForUser.CreateUser:
+                case (int)Enums.MenuOptionsForAdmin.CreateUser:
                     userController.CreateUser();
+                    break;
+                case (int)Enums.MenuOptionsForAdmin.Exit:
                     break;
 
                 default:
