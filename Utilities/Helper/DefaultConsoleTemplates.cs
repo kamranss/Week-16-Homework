@@ -10,7 +10,7 @@ namespace Utilities.Helper
     {
         public static void ConsoleTemplate(ConsoleColor coler1, string message)
         {
-            Console.BackgroundColor = ConsoleColor.White;
+            
             Console.ForegroundColor = coler1;
             Console.WriteLine(message);
             Console.ResetColor();

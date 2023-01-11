@@ -9,6 +9,12 @@ namespace Service.Interface
 {
     public interface IUserService
     {
-        User void CreateUser(IUserService user);
+        User Create(User user);
+        User Update(User user, int id);
+        User Delete(int id);
+        User Get(int id);
+        User Get(string username);
+        List<User> GetAll();
+        List<User> GetAllByName(string name);
     }
 }

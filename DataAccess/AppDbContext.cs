@@ -19,19 +19,18 @@ namespace DataAccess
             Users = new List<User>();
         }
 
-        public User AdminUserCreation()
+        public bool DefaultUserCreation()
         {
             UserRepository userRepository = new UserRepository();
 
             User adminUser = new User();
             adminUser.Id = 0;
-            adminUser.EmailAddress = "admin@email.com";
+            adminUser.EmailAddress = "user@email.com";
             adminUser.Name = "system";
             adminUser.Age = 0;
             adminUser.Role = ConstantRoles.Admin;
-            adminUser.Username = "admin";
-            adminUser.Password = "Admin";
-            return adminUser;           
+            adminUser.Username = "user";
+            adminUser.Password = "User";           
 
             User user1 = new User();
             user1.Id = 0;
@@ -41,11 +40,10 @@ namespace DataAccess
             user1.Role = ConstantRoles.Admin;
             user1.Username = "admin";
             user1.Password = "Admin";
-            return adminUser;
 
             userRepository.Create(adminUser);
             userRepository.Create(user1);
-
+            return true;
         }
         
         

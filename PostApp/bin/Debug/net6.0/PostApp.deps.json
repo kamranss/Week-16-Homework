@@ -7,14 +7,69 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "PostApp/1.0.0": {
+        "dependencies": {
+          "DataAccess": "1.0.0",
+          "Domain": "1.0.0",
+          "Service": "1.0.0",
+          "Utilities": "1.0.0"
+        },
         "runtime": {
           "PostApp.dll": {}
+        }
+      },
+      "DataAccess/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Utilities": "1.0.0"
+        },
+        "runtime": {
+          "DataAccess.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
+        "runtime": {
+          "Domain.dll": {}
+        }
+      },
+      "Service/1.0.0": {
+        "dependencies": {
+          "DataAccess": "1.0.0",
+          "Domain": "1.0.0",
+          "Utilities": "1.0.0"
+        },
+        "runtime": {
+          "Service.dll": {}
+        }
+      },
+      "Utilities/1.0.0": {
+        "runtime": {
+          "Utilities.dll": {}
         }
       }
     }
   },
   "libraries": {
     "PostApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Service/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Utilities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

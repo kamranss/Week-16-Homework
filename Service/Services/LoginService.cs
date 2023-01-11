@@ -19,28 +19,24 @@ namespace Service.Services
         {
             userRepository = new UserRepository();
         }
-        public bool Login(string username, string password)
+        public User Login(string username, string password)
         {
             User user = userRepository.Get(u => u.Username == username && u.Password == password);
             if (user != null)
             {
-                if (CheckRole(user.Role))
-                {
-                    Console.WriteLine(ConsoleMessages.AccessGranted); 
-                    return true; ;
-                }
-                else
-                {
-                    return AccountContans.SuperAdminCredentialsInvalid;
-                }
+                Console.WriteLine(ConsoleMessages.AccessGranted);
+                return user;
+                
             }
             else
             {
-                return AccountContans.CredentialsInvalid;
+                Console.WriteLine(ConsoleMessages.AccessDenied);
+                return user;
+                
             }
         }
 
-        private bool CheckRole(string role)
+        public bool CheckRole(string role)
         {
             if (role  == ConstantRoles.Admin)
             {
@@ -49,5 +45,5 @@ namespace Service.Services
             return false;
         }
     }
-    }
+    
 }

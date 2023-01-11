@@ -19,7 +19,7 @@ namespace Domain.Models
         public void GetStatusInfo()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($" Id - {Id} | Title - {Title} | Content - {SharedDate} | User_Name {User.Username} | User_Id - {User.id} ");
+            Console.WriteLine($" Id - {Id} | Title - {Title} | Content - {SharedDate} | User_Name {User.Username} | User_Id - {User.Id} ");
             Console.ResetColor();
         }
     }

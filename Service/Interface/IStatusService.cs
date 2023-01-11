@@ -10,14 +10,14 @@ namespace Service.Interface
     public interface IStatusservice
     {
         Status Create(Status status);
-        Status Update(Status status);
+        Status Update(Status status, int id);
         Status Delete(int id);
         Status Get(int id);
         Status Get(string title);
-        Status GetSbySharedDate(DateTime dateTime, int id);
         List<Status> GetAll();
         List<Status> GetAllByTitle(string title);
         List<Status> GetStatusesBySharedDate(DateTime dateTime);
+        List<Status> GetStatusesByUserId(int id);
         
     }
 }

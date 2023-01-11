@@ -8,6 +8,6 @@ namespace Domain.Interface
 {
     public interface BaseInterface
     {
-        public int? id { get; set; }
+        public int? Id { get; set; }
     }
 }

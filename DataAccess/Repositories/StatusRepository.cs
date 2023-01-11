@@ -68,7 +68,7 @@ namespace DataAccess.Repositories
         {
             try
             {
-                Status foundStatus = Get(sts => sts.id == entity.id);
+                Status foundStatus = Get(sts => sts.Id == entity.Id);
                 if (foundStatus != null)
                 {
                     foundStatus = entity;

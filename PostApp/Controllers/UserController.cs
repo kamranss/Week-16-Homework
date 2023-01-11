@@ -16,5 +16,10 @@ namespace PostApp.Controllers
             userService = new UserService();
         }
         Regex Passwordcheck3 = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
+
+        public void CreateUser()
+        {
+
+        }
     }
 }

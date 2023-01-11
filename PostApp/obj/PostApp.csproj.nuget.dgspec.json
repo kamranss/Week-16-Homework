@@ -145,8 +145,17 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "C:\\Users\\kamra\\source\\repos\\PostApp\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\kamra\\source\\repos\\PostApp\\DataAccess\\DataAccess.csproj"
+              },
+              "C:\\Users\\kamra\\source\\repos\\PostApp\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\kamra\\source\\repos\\PostApp\\Domain\\Domain.csproj"
+              },
               "C:\\Users\\kamra\\source\\repos\\PostApp\\Service\\Service.csproj": {
                 "projectPath": "C:\\Users\\kamra\\source\\repos\\PostApp\\Service\\Service.csproj"
+              },
+              "C:\\Users\\kamra\\source\\repos\\PostApp\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\kamra\\source\\repos\\PostApp\\Utilities\\Utilities.csproj"
               }
             }
           }
