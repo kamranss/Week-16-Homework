@@ -13,6 +13,8 @@ namespace DataAccess
     {
         public static List<Status> Statuses { get; set; }
         public static List<User> Users { get; set; }
+        public static int CountStatuses { get; set; } = 0;
+        public static int CountUsers { get; set; } = 0;
         public AppDbContext()
         {
             Statuses = new List<Status>();

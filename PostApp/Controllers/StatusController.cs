@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using DataAccess;
+using Domain.Models;
 using Service.Services;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace PostApp.Controllers
             
             if (string.IsNullOrEmpty(title)!)
             {
-                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.TitleEmpty);
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, ConsoleMessages.TitleEmpty);
                 goto WriteTitleAgain;
                 
             }
@@ -34,25 +35,23 @@ namespace PostApp.Controllers
             string content = Console.ReadLine();
             if (string.IsNullOrEmpty(content)!)
             {
-                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.ContentEmpty);
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, ConsoleMessages.ContentEmpty);
                 goto WriteContentAgain;
             }
 
             Status status = new Status();
             status.Title = title;
             status.Content = content;
-            Status newstatus = new Status();
-            newstatus = statusService.Create(status);
-            Status findstatus = statusService.Get(status.Title);
-            if (findstatus != null)
+            Status newstatus = statusService.Create(status);            
+            if (newstatus.Title == title)
             {
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.StatusCreated);
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue,
                       $"Status Id - {newstatus.Id} |" +
                       $"Status Title - {newstatus.Title} |" +
                       $"Status Content - {newstatus.Content} |" +
-                      $"User Id - {newstatus.User.Id} |" +
-                      $"User username - {newstatus.User.Username} |" +
+                      //$"User Id - {newstatus.User.Id} |" +
+                      //$"User username - {newstatus.User.Username} |" +
                       $"SharedDate - {newstatus.SharedDate} |" +
                       $"TimePast - {newstatus.TimePast} |");
 
@@ -66,17 +65,18 @@ namespace PostApp.Controllers
         public void FindAllStatuses()
         {
             List<Status> statuses = new List<Status>();
-            if (statuses.Count != 0)
+            statuses = statusService.GetAll();
+            if (AppDbContext.CountStatuses != 0)
             {
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.ListStatuses);
                 foreach (var item in statuses)
                 {
-                      DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue,
+                      DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
                       $"Status Id - {item.Id} |" +
                       $"Status Title - {item.Title} |" +
                       $"Status Content - {item.Content} |" +
-                      $"User Id - {item.User.Id} |" +
-                      $"User username - {item.User.Username} |" +
+                      //$"User Id - {item.User.Id} |" +
+                      //$"User username - {item.User.Username} |" +
                       $"SharedDate - {item.SharedDate} |" +
                       $"TimePast - {item.TimePast} |");
                 }

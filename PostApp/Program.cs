@@ -19,28 +19,32 @@ if (role != null)
 {
     if (loginController.CheckUserkRole(role))
     {
-        DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkBlue, ConsoleMessages.ChooseOption);
-        DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White, ConsoleMessages.OptionsForAdmin);
-        string menuoption = Console.ReadLine();
-        int selectedbutton;
-        bool selection = int.TryParse(menuoption, out selectedbutton);
-        switch (selectedbutton)
+        
+        while (whileresult)
         {
-            case (int)Enums.MenuOptions.CreateUser:
-                userController.CreateUser();
-                break;
-            case (int)Enums.MenuOptions.CreateStatus:
-                statusController.CreateStatus();
-                break;
-            case (int)Enums.MenuOptions.FindAllStatuses:
-                statusController.FindAllStatuses();
-                break;
-            case (int)Enums.MenuOptions.Exit:
-                whileresult = false;
-                break;
+            DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkMagenta, ConsoleMessages.ChooseOption);
+            DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White, ConsoleMessages.OptionsForAdmin);
+            string menuoption = Console.ReadLine();
+            int selectedbutton;
+            bool selection = int.TryParse(menuoption, out selectedbutton);
+            switch (selectedbutton)
+            {
+                case (int)Enums.MenuOptions.CreateUser:
+                    userController.CreateUser();
+                    break;
+                case (int)Enums.MenuOptions.CreateStatus:
+                    statusController.CreateStatus();
+                    break;
+                case (int)Enums.MenuOptions.FindAllStatuses:
+                    statusController.FindAllStatuses();
+                    break;
+                case (int)Enums.MenuOptions.Exit:
+                    whileresult = false;
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+            }
         }
 
     }

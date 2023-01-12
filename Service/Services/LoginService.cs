@@ -24,13 +24,13 @@ namespace Service.Services
             User user = userRepository.Get(u => u.Username == username && u.Password == password);
             if (user != null)
             {
-                Console.WriteLine(ConsoleMessages.AccessGranted);
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkGreen, ConsoleMessages.AccessGranted);
                 return user;
                 
             }
             else
             {
-                Console.WriteLine(ConsoleMessages.AccessDenied);
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, ConsoleMessages.AccessDenied);
                 return user;
                 
             }

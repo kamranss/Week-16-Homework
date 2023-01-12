@@ -1,4 +1,5 @@
-﻿using DataAccess.Repositories;
+﻿using DataAccess;
+using DataAccess.Repositories;
 using Domain.Models;
 using Service.Interface;
 using System;
@@ -30,6 +31,7 @@ namespace Service.Services
                         if (userRepository.Create(user))
                         {
                             Id++;
+                            AppDbContext.CountUsers++;
                             return user;
                         }
                     }
@@ -54,6 +56,7 @@ namespace Service.Services
                 if (user != null)
                 {
                     userRepository.Delete(user);
+                    AppDbContext.CountUsers--;
                 }
                 return null;
             }

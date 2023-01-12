@@ -1,4 +1,5 @@
-﻿using DataAccess.Repositories;
+﻿using DataAccess;
+using DataAccess.Repositories;
 using Domain.Models;
 using Service.Interface;
 using System;
@@ -11,15 +12,17 @@ namespace Service.Services
 {
     public class StatusService : IStatusservice
     {
+        
         private readonly StatusRepository statusRepository;
         private readonly UserRepository userRepository;
         public static int Id { get; set; } = 1;
-        public static int Count { get; set; } = 1;
+       
 
         public StatusService()
         {
             statusRepository = new StatusRepository();
             userRepository = new UserRepository();
+
             //List<Status> statuses = new List<Status>();
             //statuses = statusRepository.GetAll();
             //DateTime time = DateTime.Now;
@@ -33,15 +36,14 @@ namespace Service.Services
         {
             try
             {
-                if (status.Title != null && status.Content != null && status.User != null) 
+                if (status.Title != null && status.Content != null) /*status.User != null*/
                 {
                     status.Id = Id;
-                    status.Count = Count;
                     status.SharedDate = DateTime.Now;
                     if (statusRepository.Create(status))
                     {
                         Id++;
-                        Count++;
+                        AppDbContext.CountStatuses++;
                         return status;                       
                     }                   
                     return status;
@@ -63,7 +65,7 @@ namespace Service.Services
                 if (status != null)
                 {
                     statusRepository.Delete(status);
-                    Count--;
+                    AppDbContext.CountStatuses --;
                     return status;
                 }
                 return null;
