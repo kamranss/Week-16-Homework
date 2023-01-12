@@ -36,25 +36,23 @@ namespace PostApp.Controllers
                 bool convertedAge = int.TryParse(stringAge, out Age);
                 if (convertedAge)
                 {
-                    goto WriteAgeAgain;DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, "Something Went Wrong -> You should use digits");
+                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputEmailAddress);
+                    string emailaddress = Console.ReadLine();
+
+                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputUsername);
+                    string username = Console.ReadLine();
+
+                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputUserPassword);
+                    string password = Console.ReadLine();
+
+                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputuserRole);
+                    string role = Console.ReadLine();                    
 
                 }
             }
             else
             {
-                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputEmailAddress);
-                string emailaddress = Console.ReadLine();
-
-                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputUsername);
-                string username = Console.ReadLine();
-
-                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputUserPassword);
-                string password = Console.ReadLine();
-
-                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputuserRole);
-                string role = Console.ReadLine();
-                  
-                
+                goto WriteAgeAgain; DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, "Something Went Wrong -> You should use digits");
             }
             
 

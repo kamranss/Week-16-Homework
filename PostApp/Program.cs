@@ -24,21 +24,48 @@ if (role != null)
         string menuoption = Console.ReadLine();
         int selectedbutton;
         bool selection = int.TryParse(menuoption, out selectedbutton);
-        while (whileresult)
+        switch (selectedbutton)
         {
-            switch (selectedbutton)
-            {
-                case (int)Enums.MenuOptionsForAdmin.CreateUser:
-                    userController.CreateUser();
-                    break;
-                case (int)Enums.MenuOptionsForAdmin.Exit:
-                    break;
+            case (int)Enums.MenuOptions.CreateUser:
+                userController.CreateUser();
+                break;
+            case (int)Enums.MenuOptions.CreateStatus:
+                statusController.CreateStatus();
+                break;
+            case (int)Enums.MenuOptions.FindAllStatuses:
+                statusController.FindAllStatuses();
+                break;
+            case (int)Enums.MenuOptions.Exit:
+                whileresult = false;
+                break;
 
-                default:
-                    break;
-            }
+            default:
+                break;
         }
 
+    }
+    else
+    {
+        DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkBlue, ConsoleMessages.ChooseOption);
+        DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White, ConsoleMessages.OptionsForAdmin);
+        string menuoption = Console.ReadLine();
+        int selectedbutton;
+        bool selection = int.TryParse(menuoption, out selectedbutton);
+        switch (selectedbutton)
+        {
+            case (int)Enums.MenuOptions.CreateStatus:
+                statusController.CreateStatus();
+                break;
+            case (int)Enums.MenuOptions.FindAllStatuses:
+                statusController.FindAllStatuses();
+                break;
+            case (int)Enums.MenuOptions.Exit:
+                whileresult = false;
+                break;
+
+            default:
+                break;
+        }
     }
 }
 

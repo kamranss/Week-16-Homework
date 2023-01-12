@@ -46,7 +46,7 @@ namespace PostApp.Controllers
         
         public bool CheckUserkRole(string role)
         {
-            if (role == ConstantRoles.Admin)
+            if (role == ConstantRoles.User)
             {
                 return true;
             }

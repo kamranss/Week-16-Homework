@@ -17,6 +17,8 @@ namespace DataAccess
         {
             Statuses = new List<Status>();
             Users = new List<User>();
+
+            
         }
 
         public bool DefaultUserCreation()
@@ -37,7 +39,7 @@ namespace DataAccess
             user1.EmailAddress = "admin@email.com";
             user1.Name = "system";
             user1.Age = 0;
-            user1.Role = ConstantRoles.Admin;
+            user1.Role = ConstantRoles.User;
             user1.Username = "admin";
             user1.Password = "Admin";
 

@@ -11,10 +11,13 @@ namespace Domain.Models
     {
         public string Title { get; set; }
         public string Content { get; set; }
-        public DateTime SharedDate { get; set; } = DateTime.Now;
+        public DateTime SharedDate { get; set; }
+        public TimeSpan TimePast { get; set; } = new TimeSpan (0, 0, 0);
         //public int UserId { get; set; }
         public User User { get; set; }
         public int? Id { get; set; }
+        public int Count { get; set; }
+        
 
         public void GetStatusInfo()
         {

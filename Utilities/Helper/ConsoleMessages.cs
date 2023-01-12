@@ -36,6 +36,10 @@ namespace Utilities.Helper
 
         public const string WriteStatustitle = "Please Write Status Title";
         public const string WriteStatusContent = "Please Write Status Content";
+        public const string StatusCreated = "following Statuses Posted";
+        public const string StatusNotCreated = "Something Went Wrong: Status Not Created";
+        public const string ListStatuses = "Following statuses exist in Database";
+        public const string NoStatusInDatabase = "There is no status in Database";
 
         #region Error Messages Status
         public const string TitleEmpty = " Your can not create Status without title please try again";

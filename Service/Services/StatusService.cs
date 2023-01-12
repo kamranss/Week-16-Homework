@@ -14,22 +14,34 @@ namespace Service.Services
         private readonly StatusRepository statusRepository;
         private readonly UserRepository userRepository;
         public static int Id { get; set; } = 1;
+        public static int Count { get; set; } = 1;
 
         public StatusService()
         {
             statusRepository = new StatusRepository();
             userRepository = new UserRepository();
+            //List<Status> statuses = new List<Status>();
+            //statuses = statusRepository.GetAll();
+            //DateTime time = DateTime.Now;
+            //foreach (var item in statuses)
+            //{
+            //    item.TimePast = time - item.SharedDate;
+            //}
+
         }
         public Status Create(Status status)
         {
             try
             {
-                if (status.Title != null && status.Content != null && status.User !=null )
+                if (status.Title != null && status.Content != null && status.User != null) 
                 {
                     status.Id = Id;
+                    status.Count = Count;
+                    status.SharedDate = DateTime.Now;
                     if (statusRepository.Create(status))
                     {
                         Id++;
+                        Count++;
                         return status;                       
                     }                   
                     return status;
@@ -51,6 +63,7 @@ namespace Service.Services
                 if (status != null)
                 {
                     statusRepository.Delete(status);
+                    Count--;
                     return status;
                 }
                 return null;
@@ -104,7 +117,12 @@ namespace Service.Services
             {
                 List<Status> statuses = statusRepository.GetAll();
                 if (statuses != null)
-                {
+                {                    
+                    DateTime time = DateTime.Now;
+                    foreach (var item in statuses)
+                    {
+                        item.TimePast = time - item.SharedDate;
+                    }
                     return statuses;
                 }
                 return null;

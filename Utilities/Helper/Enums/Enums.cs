@@ -15,30 +15,30 @@ namespace Utilities.Helper.Enums
             DataBaseAdministrator
         }
 
-        public enum MenuOptionsForAdmin
+        public enum MenuOptions
         {
             CreateUser = 1,
+            CreateStatus,
+            FindAllStatuses,
+            FindAllUsers,
             DeleteUser,
             UpdateUser,
             SerchUserByid,
             SerchUserbyUsername,
-            SerachUserbyName,
-            FindAllUsers,
+            SerachUserbyName,          
             ECreateStatus,
             DeleteStatus,
             UpdateStatus,
             SerchStatusByid,
             SerchStatusesByUserId,
             SearchStatusesByIdandDatetime,
-            FindAllStatuses,
-            Exit
-        }
-        public enum MenuOptionsForUser
-        {
-            CreateStatus = 1,
+            
+            
             SerchUserStatuses,
             SearchUserStatusesByDate,
             Exit
+
         }
+        
     }
 }
