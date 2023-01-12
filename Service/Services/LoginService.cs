@@ -36,14 +36,14 @@ namespace Service.Services
             }
         }
 
-        public bool CheckRole(string role)
-        {
-            if (role  == ConstantRoles.Admin)
-            {
-                return true;
-            }
-            return false;
-        }
+        //public bool CheckRole(string role)
+        //{
+        //    if (role  == ConstantRoles.Admin)
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
     }
     
 }

@@ -1,4 +1,5 @@
-﻿using Service.Services;
+﻿using Domain.Models;
+using Service.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -31,37 +32,48 @@ namespace PostApp.Controllers
             int Age;
         
 
-            if (stringAge != null)
+            if (string.IsNullOrEmpty(stringAge))
             {
-                bool convertedAge = int.TryParse(stringAge, out Age);
-                if (convertedAge)
-                {
-                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputEmailAddress);
-                    string emailaddress = Console.ReadLine();
-
-                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputUsername);
-                    string username = Console.ReadLine();
-
-                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputUserPassword);
-                    string password = Console.ReadLine();
-
-                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputuserRole);
-                    string role = Console.ReadLine();                    
-
-                }
-            }
-            else
-            {
-                goto WriteAgeAgain; DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, "Something Went Wrong -> You should use digits");
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "You cannot leave filed blank");
+                goto WriteAgeAgain; 
             }
             
+            bool convertedAge = int.TryParse(stringAge, out Age);
+            if (!convertedAge)
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Something Went Wrong -> You should use digits");
+                goto WriteAgeAgain; 
+            }
 
 
+            WriteUserNameAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputUsername);
+            string username = Console.ReadLine();
+            if (string.IsNullOrEmpty(username))
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, ConsoleMessages.UserNameEmpty);
+                goto WriteUserNameAgain;
+            }
 
+            WriteUserPasswordAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputUserPassword);
+            string password = Console.ReadLine();
+            if (string.IsNullOrEmpty(password))
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, ConsoleMessages.UserPasswordEmpty);
+                goto WriteUserPasswordAgain;
+            }
+            WriteUserRoleAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Yellow, ConsoleMessages.ListUserRoles);
+            DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Yellow, ConsoleMessages.RoleNotice);
+            DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputuserRole);
+            int role = int.Parse(Console.ReadLine());
 
+            if (role ==null)
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, ConsoleMessages.UserRoleWrong);
+                goto WriteUserRoleAgain;
 
-
-
+            }
+            DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputEmailAddress);
+            string emailaddress = Console.ReadLine();
 
         }
     }

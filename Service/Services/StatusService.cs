@@ -36,7 +36,7 @@ namespace Service.Services
         {
             try
             {
-                if (status.Title != null && status.Content != null) /*status.User != null*/
+                if (status.Title != null && status.Content != null && status.User != null ) /* Check this one*/
                 {
                     status.Id = Id;
                     status.SharedDate = DateTime.Now;

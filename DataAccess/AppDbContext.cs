@@ -33,8 +33,8 @@ namespace DataAccess
             adminUser.Name = "system";
             adminUser.Age = 0;
             adminUser.Role = ConstantRoles.Admin;
-            adminUser.Username = "user";
-            adminUser.Password = "User";           
+            adminUser.Username = "admin";
+            adminUser.Password = "Admin";           
 
             User user1 = new User();
             user1.Id = 0;
@@ -42,8 +42,8 @@ namespace DataAccess
             user1.Name = "system";
             user1.Age = 0;
             user1.Role = ConstantRoles.User;
-            user1.Username = "admin";
-            user1.Password = "Admin";
+            user1.Username = "user";
+            user1.Password = "User";
 
             userRepository.Create(adminUser);
             userRepository.Create(user1);

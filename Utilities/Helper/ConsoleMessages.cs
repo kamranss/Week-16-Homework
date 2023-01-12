@@ -25,6 +25,7 @@ namespace Utilities.Helper
        "13 - SearchStatusByDate:\n"+
        "14 - FindAllStatuses:\n" +
        "15 - GetEmployeeById:\n" +
+       "16 - Logout System:\n" +
        "16 - ExitProgram:";
 
         public const string OptionsForUser=
@@ -54,6 +55,9 @@ namespace Utilities.Helper
         #endregion
 
         #region Notice
+        public const string UserNameEmpty = "Youd cannot leave the filed blank: please tyr again";
+        public const string UserPasswordEmpty = "Youd cannot leave the filed blank: please tyr again";
+        public const string UserRoleWrong = "Provided Role is Wrong: Please try again";
         public const string EmailStructure = "Email should be provided according to given structure";
         public const string PasswordStructure = 
             "Password should follow provided structure\n" +
@@ -69,6 +73,12 @@ namespace Utilities.Helper
         public const string InputEmailAddress = "Write user Email";
         public const string InputUsername = "Write User username";
         public const string InputUserPassword = " Write user Password";
+        public const string ListUserRoles = 
+            "Following roles exist in Database You can Choose one\n"+
+            "1Admin:        1\n"+
+            "User:          2\n"+
+            "DataBaseAdmin: 3\n";
+        public const string RoleNotice = "Choose the number of the respective role and press enter";
         public const string InputuserRole = "Write user Role";
         #endregion
 

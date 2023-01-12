@@ -20,7 +20,7 @@ namespace PostApp.Controllers
             UserService = new UserService();
         }
 
-        public void CreateStatus()
+        public void CreateStatus(User user)
         {
             WriteTitleAgain:DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.WriteStatustitle);
             string title = Console.ReadLine();
@@ -42,18 +42,19 @@ namespace PostApp.Controllers
             Status status = new Status();
             status.Title = title;
             status.Content = content;
+            status.User = user;
             Status newstatus = statusService.Create(status);            
             if (newstatus.Title == title)
             {
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.StatusCreated);
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue,
-                      $"Status Id - {newstatus.Id} |" +
-                      $"Status Title - {newstatus.Title} |" +
-                      $"Status Content - {newstatus.Content} |" +
-                      //$"User Id - {newstatus.User.Id} |" +
-                      //$"User username - {newstatus.User.Username} |" +
-                      $"SharedDate - {newstatus.SharedDate} |" +
-                      $"TimePast - {newstatus.TimePast} |");
+                      $"Status Id - {newstatus.Id}      |" +
+                      $"Status Title - {newstatus.Title}      |" +
+                      $"Status Content - {newstatus.Content}      |" +
+                      $"User Id - {newstatus.User.Id}      |" +
+                      $"User username - {newstatus.User.Username} |" +
+                      $"SharedDate - {newstatus.SharedDate}      |" +
+                      $"TimePast - {newstatus.TimePast}      |");
 
             }
             else
@@ -71,14 +72,29 @@ namespace PostApp.Controllers
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.ListStatuses);
                 foreach (var item in statuses)
                 {
-                      DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
-                      $"Status Id - {item.Id} |" +
-                      $"Status Title - {item.Title} |" +
-                      $"Status Content - {item.Content} |" +
-                      //$"User Id - {item.User.Id} |" +
-                      //$"User username - {item.User.Username} |" +
-                      $"SharedDate - {item.SharedDate} |" +
-                      $"TimePast - {item.TimePast} |");
+                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
+                    $"Status Id - {item.Id}      |" +
+                    $"Status Title - {item.Title}      |" +
+                    $"Status Content - {item.Content}      |" +
+                    $"User Id - {item.User.Id}      |" +
+                    $"User username - {item.User.Username}      |" +
+                    $"SharedDate - {item.SharedDate}      |" +
+                    $"TimePast - {item.TimePast}       |");
+
+                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
+                    //$"Status Id - {item.Id} |\n" );
+                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Yellow,
+                    //$"Status Title - {item.Title} |\n" );
+                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Green,
+                    //$"Status Content - {item.Content} |\n" );
+                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue,
+                    //$"User Id - {item.User.Id} |\n" );
+                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
+                    //$"User username - {item.User.Username} |\n");
+                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red,
+                    //$"SharedDate - {item.SharedDate} |\n" );
+                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Magenta,
+                    //$"TimePast - {item.TimePast} |\n");
                 }
             }
             else

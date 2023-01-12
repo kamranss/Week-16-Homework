@@ -12,14 +12,12 @@ UserController userController = new UserController();
 StatusController statusController = new StatusController();
 
 
-bool whileresult = true;
-DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "In oder to access system you should provide credentials:");
-string role = loginController.LoginToSystem();
-if (role != null)
-{
-    if (loginController.CheckUserkRole(role))
+
+LogInAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "In oder to access system you should provide credentials:");
+User loggedInUser = loginController.LoginToSystem();
+    if (loggedInUser.Role == ConstantRoles.Admin)
     {
-        
+        bool whileresult = true;
         while (whileresult)
         {
             DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkMagenta, ConsoleMessages.ChooseOption);
@@ -33,14 +31,18 @@ if (role != null)
                     userController.CreateUser();
                     break;
                 case (int)Enums.MenuOptions.CreateStatus:
-                    statusController.CreateStatus();
+                    statusController.CreateStatus(loggedInUser);
                     break;
                 case (int)Enums.MenuOptions.FindAllStatuses:
                     statusController.FindAllStatuses();
                     break;
+                case (int)Enums.MenuOptions.LogOut:
+                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "You looged out:");
+                    goto LogInAgain;                   
                 case (int)Enums.MenuOptions.Exit:
                     whileresult = false;
                     break;
+                    
 
                 default:
                     break;
@@ -48,28 +50,44 @@ if (role != null)
         }
 
     }
-    else
-    {
-        DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkBlue, ConsoleMessages.ChooseOption);
-        DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White, ConsoleMessages.OptionsForAdmin);
-        string menuoption = Console.ReadLine();
-        int selectedbutton;
-        bool selection = int.TryParse(menuoption, out selectedbutton);
-        switch (selectedbutton)
-        {
-            case (int)Enums.MenuOptions.CreateStatus:
-                statusController.CreateStatus();
-                break;
-            case (int)Enums.MenuOptions.FindAllStatuses:
-                statusController.FindAllStatuses();
-                break;
-            case (int)Enums.MenuOptions.Exit:
-                whileresult = false;
-                break;
-
-            default:
-                break;
-        }
-    }
+else
+{
+    Console.WriteLine("You do not have access to Datebase");
 }
+    //else if (loggedInUser.Role == ConstantRoles.User)
+    //{
+    //    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkBlue, ConsoleMessages.ChooseOption);
+    //    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White, ConsoleMessages.OptionsForAdmin);
+    //    string menuoption = Console.ReadLine();
+    //    int selectedbutton;
+    //    bool selection = int.TryParse(menuoption, out selectedbutton);
+    //    bool whileresult = true;
+    //    while (true)
+    //    {
+    //        switch (selectedbutton)
+    //        {
+    //            case (int)Enums.MenuOptions.CreateStatus:
+    //                statusController.CreateStatus(loggedInUser);
+    //                break;
+    //            case (int)Enums.MenuOptions.FindAllStatuses:
+    //                statusController.FindAllStatuses();
+    //                break;
+    //            case (int)Enums.MenuOptions.Exit:
+    //                whileresult = false;
+    //                break;
+
+    //            default:
+    //                break;
+    //        }
+    //    }
+        
+    //}
+    //else if (loggedInUser.Role == ConstantRoles.DataBaseAdmin)
+    //{
+
+    //}
+    //else
+    //{
+    //    Console.WriteLine(" You do not have access to any service ");
+    //}
 

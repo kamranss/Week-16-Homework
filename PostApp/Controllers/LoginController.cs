@@ -22,7 +22,7 @@ namespace PostApp.Controllers
             loginService = new LoginService();
         }
         
-        public string LoginToSystem()
+        public User LoginToSystem()
         {
             AppDbContext appDbContext = new AppDbContext();
 
@@ -36,7 +36,7 @@ namespace PostApp.Controllers
             User user = loginService.Login(username, password);         
             if (user != null)
             {
-                return user.Role;
+                return user;
                
             }
             
