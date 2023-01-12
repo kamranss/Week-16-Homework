@@ -42,19 +42,19 @@ namespace PostApp.Controllers
             Status status = new Status();
             status.Title = title;
             status.Content = content;
-            status.User = user;
+            status.User = user; /* The user comes as parameter from Log in method which called in Main Class*/
             Status newstatus = statusService.Create(status);            
             if (newstatus.Title == title)
             {
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.StatusCreated);
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue,
-                      $"Status Id - {newstatus.Id}      |" +
-                      $"Status Title - {newstatus.Title}      |" +
-                      $"Status Content - {newstatus.Content}      |" +
-                      $"User Id - {newstatus.User.Id}      |" +
-                      $"User username - {newstatus.User.Username} |" +
-                      $"SharedDate - {newstatus.SharedDate}      |" +
-                      $"TimePast - {newstatus.TimePast}      |");
+                      $"Status Id - {newstatus.Id}  |" +
+                      $"Status Title - {newstatus.Title}  |" +
+                      $"Status Content - {newstatus.Content}  |" +
+                      $"User Id - {newstatus.User.Id}  |" +
+                      $"User username - {newstatus.User.Username}  |" +
+                      $"SharedDate - {newstatus.SharedDate}  |" +
+                      $"TimePast - {newstatus.TimePast}  |");
 
             }
             else
@@ -73,13 +73,13 @@ namespace PostApp.Controllers
                 foreach (var item in statuses)
                 {
                     DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
-                    $"Status Id - {item.Id}      |" +
-                    $"Status Title - {item.Title}      |" +
-                    $"Status Content - {item.Content}      |" +
-                    $"User Id - {item.User.Id}      |" +
-                    $"User username - {item.User.Username}      |" +
-                    $"SharedDate - {item.SharedDate}      |" +
-                    $"TimePast - {item.TimePast}       |");
+                    $"Status Id - {item.Id} |" +
+                    $"Status Title - {item.Title} |" +
+                    $"Status Content - {item.Content} |" +
+                    $"User Id - {item.User.Id} |" +
+                    $"User username - {item.User.Username} |" +
+                    $"SharedDate - {item.SharedDate} |" +
+                    $"TimePast - {item.TimePast} |");
 
                     //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
                     //$"Status Id - {item.Id} |\n" );

@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using DataAccess.Repositories;
+using Domain.Models;
 using Service.Services;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,6 @@ namespace PostApp.Controllers
         {
             userService = new UserService();
         }
-        Regex Passwordcheck3 = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
 
         public void CreateUser()
         {
@@ -29,7 +29,7 @@ namespace PostApp.Controllers
             string surname = Console.ReadLine();
             WriteAgeAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputAge);
             string stringAge = Console.ReadLine();
-            int Age;
+            int age;
         
 
             if (string.IsNullOrEmpty(stringAge))
@@ -38,7 +38,7 @@ namespace PostApp.Controllers
                 goto WriteAgeAgain; 
             }
             
-            bool convertedAge = int.TryParse(stringAge, out Age);
+            bool convertedAge = int.TryParse(stringAge, out age);
             if (!convertedAge)
             {
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Something Went Wrong -> You should use digits");
@@ -50,30 +50,96 @@ namespace PostApp.Controllers
             string username = Console.ReadLine();
             if (string.IsNullOrEmpty(username))
             {
-                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, ConsoleMessages.UserNameEmpty);
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, ConsoleMessages.FieldEmpty);
                 goto WriteUserNameAgain;
             }
 
-            WriteUserPasswordAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputUserPassword);
+            WriteUserPasswordAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkGreen, ConsoleMessages.PasswordStructure);
+            DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputUserPassword);
             string password = Console.ReadLine();
             if (string.IsNullOrEmpty(password))
             {
-                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, ConsoleMessages.UserPasswordEmpty);
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, ConsoleMessages.FieldEmpty);
                 goto WriteUserPasswordAgain;
             }
+
+            User user = new User();
+            if (!user.PasswordChecker(password))
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, ConsoleMessages.PasswordFaild);
+                goto WriteUserPasswordAgain;
+            }
+
+            WriteEmailAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkGreen, ConsoleMessages.EmailStructure);
+            DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputEmailAddress);
+            string emailaddress = Console.ReadLine();
+            if (string.IsNullOrEmpty(emailaddress))
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, ConsoleMessages.FieldEmpty);
+                goto WriteEmailAgain;
+            }
+
+            if (!user.EmailChecker(emailaddress))
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, ConsoleMessages.EmailFaild);
+                goto WriteEmailAgain;
+            }
+
             WriteUserRoleAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Yellow, ConsoleMessages.ListUserRoles);
             DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Yellow, ConsoleMessages.RoleNotice);
             DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputuserRole);
-            int role = int.Parse(Console.ReadLine());
+            string selectedRole = (Console.ReadLine());
 
-            if (role ==null)
+            if (string.IsNullOrEmpty(selectedRole))
             {
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, ConsoleMessages.UserRoleWrong);
                 goto WriteUserRoleAgain;
-
             }
-            DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputEmailAddress);
-            string emailaddress = Console.ReadLine();
+            int role;
+            bool convertedRole = int.TryParse(selectedRole, out role);
+            if (!convertedRole || role > 3)
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, ConsoleMessages.UserRoleWrong);
+                goto WriteUserRoleAgain;
+            }
+
+            user.Name = name;
+            user.Surname = surname;
+            user.Age = age;
+            user.Username = username;
+            user.EmailAddress = emailaddress;
+            user.Password = password;
+            if (role == 1)
+            {
+                user.Role = ConstantRoles.Admin;
+            }
+            else if (role == 2)
+            {
+                user.Role = ConstantRoles.User;
+            }
+            else
+            {
+                user.Role = ConstantRoles.DataBaseAdmin;
+            }
+
+            User newUser = userService.Create(user);
+            if (newUser != null)
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White, "Following User Created");
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Green,
+                $"Id - {newUser.Id}  |" +
+                $"Name - {newUser.Name}  |" +
+                $"Surname - {newUser.Surname}  |" +
+                $"Age- {newUser.Age}  |" +
+                $"Username - {newUser.Username}  |" +
+                $"Emailaddress - {newUser.EmailAddress}  |" +
+                $"Role - {newUser.Role}  |");
+            }
+            else
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "Something Went Wrong: User not Created");
+            }
+            
 
         }
     }

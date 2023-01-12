@@ -15,6 +15,11 @@ StatusController statusController = new StatusController();
 
 LogInAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "In oder to access system you should provide credentials:");
 User loggedInUser = loginController.LoginToSystem();
+if (loggedInUser == null)
+{
+    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "Credentials is wrong:");
+    goto LogInAgain;
+}
     if (loggedInUser.Role == ConstantRoles.Admin)
     {
         bool whileresult = true;

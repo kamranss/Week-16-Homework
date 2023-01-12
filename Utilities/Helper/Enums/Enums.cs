@@ -31,9 +31,7 @@ namespace Utilities.Helper.Enums
             UpdateStatus,
             SerchStatusByid,
             SerchStatusesByUserId,
-            SearchStatusesByIdandDatetime,
-            
-            
+            SearchStatusesByIdandDatetime,          
             SerchUserStatuses,
             SearchUserStatusesByDate,
             LogOut,
