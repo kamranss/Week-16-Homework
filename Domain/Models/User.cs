@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class User:BaseInterface
+    public class User : BaseInterface
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -17,7 +17,8 @@ namespace Domain.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
-        
+
+        public static int LoggedinCount { get; set; }
         public int? Id { get ; set ; }
 
 

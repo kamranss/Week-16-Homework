@@ -1,4 +1,5 @@
-﻿using DataAccess.Repositories;
+﻿using DataAccess;
+using DataAccess.Repositories;
 using Domain.Models;
 using Service.Interface;
 using System;
@@ -21,16 +22,24 @@ namespace Service.Services
         }
         public User Login(string username, string password)
         {
+            AppDbContext appDbContext = new AppDbContext();
+
+            appDbContext.DefaultUserCreation();
+
+
             User user = userRepository.Get(u => u.Username == username && u.Password == password);
             if (user != null)
             {
+                User.LoggedinCount++;
+                Console.WriteLine(User.LoggedinCount);
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkGreen, ConsoleMessages.AccessGranted);
                 return user;
                 
             }
             else
             {
-                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, ConsoleMessages.AccessDenied);
+                
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, ConsoleMessages.AccessDenied);                
                 return user;
                 
             }

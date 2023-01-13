@@ -1,5 +1,7 @@
-﻿using DataAccess.Repositories;
+﻿using DataAccess;
+using DataAccess.Repositories;
 using Domain.Models;
+using Service.Interface;
 using Service.Services;
 using System;
 using System.Collections.Generic;
@@ -141,6 +143,34 @@ namespace PostApp.Controllers
             }
             
 
+        }
+
+        public void FindAllUsers()
+        {
+            List<User> users = new List<User>();
+            users = userService.GetAll();
+            if (AppDbContext.CountUsers != 0)
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.ListStatuses);
+                foreach (var item in users)
+                {
+                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White, "Following User Created");
+                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Green,
+                    $"Id - {item.Id}  |" +
+                    $"Name - {item.Name}  |" +
+                    $"Surname - {item.Surname}  |" +
+                    $"Age- {item.Age}  |" +
+                    $"Username - {item.Username}  |" +
+                    $"Emailaddress - {item.EmailAddress}  |" +
+                    $"Role - {item.Role}  |");
+
+
+                }
+            }
+            else
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.NoStatusInDatabase);
+            }
         }
     }
 }

@@ -15,14 +15,18 @@ StatusController statusController = new StatusController();
 
 LogInAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "In oder to access system you should provide credentials:");
 User loggedInUser = loginController.LoginToSystem();
+bool whileresult = true;
 if (loggedInUser == null)
 {
+    
     DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "Credentials is wrong:");
-    goto LogInAgain;
+    goto LogInAgain;   
 }
-    if (loggedInUser.Role == ConstantRoles.Admin)
+
+if (loggedInUser.Role == ConstantRoles.Admin)
     {
-        bool whileresult = true;
+
+        
         while (whileresult)
         {
             DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkMagenta, ConsoleMessages.ChooseOption);
@@ -30,8 +34,10 @@ if (loggedInUser == null)
             string menuoption = Console.ReadLine();
             int selectedbutton;
             bool selection = int.TryParse(menuoption, out selectedbutton);
+            
             switch (selectedbutton)
             {
+
                 case (int)Enums.MenuOptions.CreateUser:
                     userController.CreateUser();
                     break;
@@ -41,11 +47,14 @@ if (loggedInUser == null)
                 case (int)Enums.MenuOptions.FindAllStatuses:
                     statusController.FindAllStatuses();
                     break;
+                case (int)Enums.MenuOptions.FindAllUsers:
+                    userController.FindAllUsers();
+                    break;
                 case (int)Enums.MenuOptions.LogOut:
                     DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "You looged out:");
                     goto LogInAgain;                   
                 case (int)Enums.MenuOptions.Exit:
-                    whileresult = false;
+                     whileresult = false;
                     break;
                     
 

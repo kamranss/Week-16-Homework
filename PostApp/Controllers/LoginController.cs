@@ -24,10 +24,6 @@ namespace PostApp.Controllers
         
         public User LoginToSystem()
         {
-            AppDbContext appDbContext = new AppDbContext();
-
-            appDbContext.DefaultUserCreation();
-
             DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.WriteUserName);
             string username = Console.ReadLine();
             DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.WriteUserPassword);
@@ -38,8 +34,7 @@ namespace PostApp.Controllers
             {
                 return user;
                
-            }
-            
+            }           
             return null;
 
         }

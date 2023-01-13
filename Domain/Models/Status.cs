@@ -12,8 +12,7 @@ namespace Domain.Models
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime SharedDate { get; set; }
-        public TimeSpan TimePast { get; set; } = new TimeSpan (0, 0, 0);
-        //public int UserId { get; set; }
+        public TimeSpan TimePast { get; set; } = new TimeSpan(0);
         public User User { get; set; }
         public int? Id { get; set; }
         

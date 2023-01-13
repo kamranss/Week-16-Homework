@@ -113,6 +113,7 @@ namespace Service.Services
             }
         }
 
+        /* Time Span assigned in this method */
         public List<Status> GetAll()
         {
             try

@@ -54,7 +54,7 @@ namespace PostApp.Controllers
                       $"User Id - {newstatus.User.Id}  |" +
                       $"User username - {newstatus.User.Username}  |" +
                       $"SharedDate - {newstatus.SharedDate}  |" +
-                      $"TimePast - {newstatus.TimePast}  |");
+                      $"TimePast - {newstatus.TimePast.TotalSeconds}  |");
 
             }
             else
@@ -79,7 +79,7 @@ namespace PostApp.Controllers
                     $"User Id - {item.User.Id} |" +
                     $"User username - {item.User.Username} |" +
                     $"SharedDate - {item.SharedDate} |" +
-                    $"TimePast - {item.TimePast} |");
+                    $"TimePast - {item.TimePast.TotalSeconds} |");
 
                     //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
                     //$"Status Id - {item.Id} |\n" );
