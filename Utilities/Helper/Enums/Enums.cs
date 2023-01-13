@@ -35,6 +35,7 @@ namespace Utilities.Helper.Enums
             SerchUserStatuses,
             SearchUserStatusesByDate,
             LogOut,
+            LogOut2,
             Exit
 
         }

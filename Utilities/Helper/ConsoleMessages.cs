@@ -11,7 +11,7 @@ namespace Utilities.Helper
         public const string ChooseOption = "Please choose one of the option from Menu bar:\n";
         public const string OptionsForAdmin =        
         "1 - Create User:\n" +
-        "2 - CreateStatus:\n" +
+        "2 - ShareStatus\n:" +
         "3 - FindAllStatuses:\n" +
         "4 - FindAllUsers:\n" +
         "5 - DeleteUser:\n" +

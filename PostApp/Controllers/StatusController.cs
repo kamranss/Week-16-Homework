@@ -103,6 +103,26 @@ namespace PostApp.Controllers
             }
             
         }
+        public void DeleteStatus()
+        {
+            WriteStatusAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.WriteStatusId);
+            string stringid = Console.ReadLine();
+            int statusId;
+            
+
+            if (string.IsNullOrEmpty(stringid))
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "You cannot leave filed blank");
+                goto WriteStatusAgain;
+            }
+
+            bool convertedId = int.TryParse(stringid, out statusId);
+            if (!convertedId)
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Something Went Wrong -> You should use digits");
+                goto WriteStatusAgain;
+            }
+        }
         
     }
 }
