@@ -80,21 +80,6 @@ namespace PostApp.Controllers
                     $"User username - {item.User.Username} |" +
                     $"SharedDate - {item.SharedDate} |" +
                     $"TimePast - {item.TimePast.TotalSeconds} |");
-
-                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
-                    //$"Status Id - {item.Id} |\n" );
-                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Yellow,
-                    //$"Status Title - {item.Title} |\n" );
-                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Green,
-                    //$"Status Content - {item.Content} |\n" );
-                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue,
-                    //$"User Id - {item.User.Id} |\n" );
-                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
-                    //$"User username - {item.User.Username} |\n");
-                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red,
-                    //$"SharedDate - {item.SharedDate} |\n" );
-                    //DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Magenta,
-                    //$"TimePast - {item.TimePast} |\n");
                 }
             }
             else
@@ -121,6 +106,118 @@ namespace PostApp.Controllers
             {
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Something Went Wrong -> You should use digits");
                 goto WriteStatusAgain;
+            }
+
+            Status foundStatus = statusService.Delete(statusId);
+            if (foundStatus != null)
+            {
+                  DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
+                    $"following Status Deleted\n" +
+                    $"Status Id - {foundStatus.Id} |" +
+                    $"Status Title - {foundStatus.Title} |" +
+                    $"Status Content - {foundStatus.Content} |" +
+                    $"User Id - {foundStatus.User.Id} |" +
+                    $"User username - {foundStatus.User.Username} |" +
+                    $"SharedDate - {foundStatus.SharedDate} |" +
+                    $"TimePast - {foundStatus.TimePast.TotalSeconds} |");               
+            }
+            else
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Status Not Found" );
+            }
+        }
+        public void GetStatusById()
+        {
+            WriteStatusIdAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.WriteStatusId);
+            string stringid = Console.ReadLine();
+            int statusId;
+
+
+            if (string.IsNullOrEmpty(stringid))
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "You cannot leave filed blank");
+                goto WriteStatusIdAgain;
+            }
+
+            bool convertedId = int.TryParse(stringid, out statusId);
+            if (!convertedId)
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Something Went Wrong -> You should use digits");
+                goto WriteStatusIdAgain;
+            }
+
+            Status foundStatus = statusService.Get(statusId);
+            if (foundStatus != null)
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
+                  $"following Status Deleted\n" +
+                  $"Status Id - {foundStatus.Id} |" +
+                  $"Status Title - {foundStatus.Title} |" +
+                  $"Status Content - {foundStatus.Content} |" +
+                  $"User Id - {foundStatus.User.Id} |" +
+                  $"User username - {foundStatus.User.Username} |" +
+                  $"SharedDate - {foundStatus.SharedDate} |" +
+                  $"TimePast - {foundStatus.TimePast.TotalSeconds} |");
+            }
+            else
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Status Not Found");
+            }
+        }
+        public void GetStatusByDate()
+        {
+            WriteStatusIdAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.WriteStatusId);
+            string stringid = Console.ReadLine();
+            int userId;
+
+
+            if (string.IsNullOrEmpty(stringid))
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "You cannot leave filed blank");
+                goto WriteStatusIdAgain;
+            }
+
+            bool convertedId = int.TryParse(stringid, out userId);
+            if (!convertedId)
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Something Went Wrong -> You should use digits");
+                goto WriteStatusIdAgain;
+            }
+
+            WriteDateAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.WriteStatusSharedDate);
+            DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, 
+                "Please make sure that provided date is following given structure\n:" +
+                "02/02/2002");
+            
+            string stringDate = Console.ReadLine();
+            DateTime convertedDate = Convert.ToDateTime(stringDate);
+            if (convertedId == null)
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Given Date is not matching with provided structure");
+                goto WriteDateAgain; 
+            }
+
+
+
+            List<Status> foundStatuses = statusService.GetStatusesBySharedDateandUserid(userId, convertedDate);
+            if (foundStatuses != null)
+            {
+                foreach (var item in foundStatuses)
+                {
+                  DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
+                  $"following Status Deleted\n" +
+                  $"Status Id - {item.Id} |" +
+                  $"Status Title - {item.Title} |" +
+                  $"Status Content - {item.Content} |" +
+                  $"User Id - {item.User.Id} |" +
+                  $"User username - {item.User.Username} |" +
+                  $"SharedDate - {item.SharedDate} |" +
+                  $"TimePast - {item.TimePast.TotalSeconds} |");
+                }
+            }
+            else
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "According to given Date or Id no statuses found");
             }
         }
         
