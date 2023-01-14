@@ -9,27 +9,28 @@ namespace Utilities.Helper
     public class ConsoleMessages
     {
         public const string ChooseOption = "Please choose one of the option from Menu bar:\n";
-        public const string OptionsForAdmin =        
-        "1 - Create User:\n" +
-        "2 - ShareStatus:\n" +
-        "3 - FindAllStatuses:\n" +
-        "4 - FindAllUsers:\n" +
-        "5 - FindStatusByDateandUserId:\n" +
-        "6 - SerchStatusByid\n" +
-        "7 - DeleteUser:\n" +
-        "8 - UpdateUser:\n" +
-        "9 - SerchUserByid:\n" +
-        "10 - SerchUserbyUsername:\n" +
-        "11 - SerachUserbyName:\n" +
-       "12 - CreateStatus:\n" +
-       "13 - DeleteStatus:\n" +
-       "14 - UpdateStatus:\n" +      
-       "15 - SerchStatusesByUserId:\n" +
-       "16 - SearchStatusesByIdandDatetime:\n" +
-       "17 - SerchUserStatuses:\n" +
-       "18 - SearchUserStatusesByDate:\n" +
-       "19 - LogOut:\n" +
-       "20 - Exit:";
+        public const string OptionsForAdmin =
+        "1 - Create User: working\n" +
+        "2 - ShareStatus: working\n" +
+        "3 - FindAllStatuses: working\n" +
+        "4 - FindAllUsers: working\n" +
+        "5 - FindStatusByDateandUserId: working\n" +
+        "6 - SerchStatusByid working\n" +
+        "7 - DeleteUser: working\n" +
+       // "8 - UpdateUser:\n" +
+       // "9 - SerchUserByid:\n" +
+       // "10 - SerchUserbyUsername:\n" +
+       // "11 - SerachUserbyName:\n" +
+       //"12 - CreateStatus:\n" +
+       //"13 - DeleteStatus:\n" +
+       //"14 - UpdateStatus:\n" +      
+       //"15 - SerchStatusesByUserId:\n" +
+       //"16 - SearchStatusesByIdandDatetime:\n" +
+       //"17 - SerchUserStatuses:\n" +
+       //"18 - SearchUserStatusesByDate:\n" +
+       "19 - LogOut: working\n" +
+       "20 - LogOut2: working\n"+
+       "20 - Exit: working";
 
 
         public const string OptionsForUser=

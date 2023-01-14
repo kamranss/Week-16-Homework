@@ -46,9 +46,10 @@ namespace Utilities.Helper.Enums
             ShareStatus =1,
             SerchUserStatuses,
             SearchUserStatusesByDate,
+            Exit,
             LogOut,
-            LogOut2,
-            Exit
+            LogOut2
+            
 
         }
 

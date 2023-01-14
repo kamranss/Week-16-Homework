@@ -29,6 +29,7 @@ if (loggedInUser.Role == ConstantRoles.Admin)
     bool whileresult = true;
     while (whileresult)
     {
+
         DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkMagenta, ConsoleMessages.ChooseOption);
         DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White, ConsoleMessages.OptionsForAdmin);
         string menuoption = Console.ReadLine();
