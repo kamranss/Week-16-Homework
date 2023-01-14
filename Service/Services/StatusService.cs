@@ -234,5 +234,10 @@ namespace Service.Services
                 throw;
             }
         }
+
+        public List<Status> Get()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

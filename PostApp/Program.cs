@@ -77,9 +77,34 @@ if (loggedInUser.Role == ConstantRoles.Admin)
     }
 
 }
-else
+else if (loggedInUser.Role == ConstantRoles.User)
 {
-    Console.WriteLine("You do not have access to Services");
+    
+    bool whileresult = true;
+
+    while (whileresult)
+    {
+        DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkMagenta, ConsoleMessages.ChooseOption);
+        DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White, ConsoleMessages.OptionsForUser);
+        string menuoption = Console.ReadLine();
+        int selectedbutton;
+        bool selection = int.TryParse(menuoption, out selectedbutton);
+        Console.WriteLine("You do not have access to Services");
+        switch (selectedbutton)
+        {
+            case (int)Enums.MenuOptions2.ShareStatus:
+                userController.CreateUser();
+                break;
+            case (int)Enums.MenuOptions2.Exit:
+                whileresult = false;
+                break;
+
+
+            default:
+                break;
+        }
+    }
+
 }
 //else if (loggedInUser.Role == ConstantRoles.User)
 //{

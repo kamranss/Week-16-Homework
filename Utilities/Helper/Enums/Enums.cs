@@ -40,6 +40,17 @@ namespace Utilities.Helper.Enums
             Exit
 
         }
-        
+        public enum MenuOptions2
+        {
+            
+            ShareStatus =1,
+            SerchUserStatuses,
+            SearchUserStatusesByDate,
+            LogOut,
+            LogOut2,
+            Exit
+
+        }
+
     }
 }

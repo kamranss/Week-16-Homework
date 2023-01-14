@@ -34,10 +34,10 @@ namespace Utilities.Helper
 
         public const string OptionsForUser=
        "Please choose one of the option from Menu bar:\n" +
-       "5 - ShareStatus:\n" +
-       "6 - FindUserStatuses:\n" +
-       "7 - FindStatusesByDate:\n" +
-       "8 - ExitProgram:";
+       "1 - ShareStatus:\n" +
+       "2 - FindUserStatuses:\n" +
+       "3 - FindStatusesByDate:\n" +
+       "4 - ExitProgram:";
 
         public const string WriteStatustitle = "Please Write Status Title";
         public const string WriteStatusContent = "Please Write Status Content";
