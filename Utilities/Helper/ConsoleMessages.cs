@@ -30,7 +30,7 @@ namespace Utilities.Helper
        //"18 - SearchUserStatusesByDate:\n" +
        "19 - LogOut: working\n" +
        "20 - LogOut2: working\n"+
-       "20 - Exit: working";
+       "21 - Exit: working";
 
 
         public const string OptionsForUser=

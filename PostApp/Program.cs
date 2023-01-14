@@ -94,7 +94,7 @@ else if (loggedInUser.Role == ConstantRoles.User)
         switch (selectedbutton)
         {
             case (int)Enums.MenuOptions2.ShareStatus:
-                userController.CreateUser();
+                statusController.CreateStatus(loggedInUser);
                 break;
             case (int)Enums.MenuOptions2.Exit:
                 whileresult = false;
