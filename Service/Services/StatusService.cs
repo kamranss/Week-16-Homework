@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Utilities.Exceptions;
 using Utilities.Helper;
 
+
 namespace Service.Services
 {
     public class StatusService : IStatusservice
@@ -84,8 +85,10 @@ namespace Service.Services
             try
             {
                 Status status = statusRepository.Get(st => st.Id == id);
+                DateTime time = DateTime.Now;
                 if (status != null)
                 {
+                    status.TimePast = time - status.SharedDate;
                     return status;
                 }
                 return null;
@@ -123,7 +126,7 @@ namespace Service.Services
                 List<Status> statuses = statusRepository.GetAll();
                 if (statuses != null)
                 {                    
-                    DateTime time = DateTime.Now;
+                    DateTime time = DateTime.Now; /* burda istifade etmek ucun yaratmisam bu method isleyende yaranir ancaq*/
                     foreach (var item in statuses)
                     {
                         item.TimePast = time - item.SharedDate;

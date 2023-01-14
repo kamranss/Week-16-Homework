@@ -79,7 +79,7 @@ namespace PostApp.Controllers
                     $"User Id - {item.User.Id} |" +
                     $"User username - {item.User.Username} |" +
                     $"SharedDate - {item.SharedDate} |" +
-                    $"TimePast - {item.TimePast.TotalSeconds} |");
+                    $"TimePast - {((int)item.TimePast.TotalSeconds)} |");
                 }
             }
             else
@@ -157,7 +157,7 @@ namespace PostApp.Controllers
                   $"User Id - {foundStatus.User.Id} |" +
                   $"User username - {foundStatus.User.Username} |" +
                   $"SharedDate - {foundStatus.SharedDate} |" +
-                  $"TimePast - {foundStatus.TimePast.TotalSeconds} |");
+                  $"Shared - {((int)foundStatus.TimePast.TotalSeconds)} - Seconds Ago |");
             }
             else
             {
@@ -194,7 +194,7 @@ namespace PostApp.Controllers
             
             string stringDate = Console.ReadLine();
             DateTime convertedDate = Convert.ToDateTime(stringDate);
-            if (convertedId == null)
+            if (convertedDate == null)
             {
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Given Date is not matching with provided structure");
                 goto WriteDateAgain; 
@@ -215,7 +215,45 @@ namespace PostApp.Controllers
                   $"User Id - {item.User.Id} |" +
                   $"User username - {item.User.Username} |" +
                   $"SharedDate - {item.SharedDate} |" +
-                  $"TimePast - {item.TimePast.TotalSeconds} |");
+                  $"TimePast - {((int)item.TimePast.TotalSeconds)} |");
+                }
+            }
+            else
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "According to given Date or Id no statuses found");
+            }
+        }
+        public void FilterStatusesbyDate()
+        {
+        WriteDateAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.WriteStatusSharedDate);
+            DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue,
+                "Please make sure that provided date is following given structure\n:" +
+                "02/02/2002");
+
+            string stringDate = Console.ReadLine();
+            DateTime convertedDate = Convert.ToDateTime(stringDate);
+            if (convertedDate == null)
+            {
+                DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Given Date is not matching with provided structure");
+                goto WriteDateAgain;
+            }
+
+
+
+            List<Status> foundStatuses = statusService.GetStatusesBySharedDate(convertedDate);
+            if (foundStatuses != null)
+            {
+                foreach (var item in foundStatuses)
+                {
+                    DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.White,
+                    $"following Status Deleted\n" +
+                    $"Status Id - {item.Id} |" +
+                    $"Status Title - {item.Title} |" +
+                    $"Status Content - {item.Content} |" +
+                    $"User Id - {item.User.Id} |" +
+                    $"User username - {item.User.Username} |" +
+                    $"SharedDate - {item.SharedDate} |" +
+                    $"TimePast - {((int)item.TimePast.TotalSeconds)} |");
                 }
             }
             else

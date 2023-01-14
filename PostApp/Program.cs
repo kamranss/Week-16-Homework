@@ -37,9 +37,9 @@ if (loggedInUser.Role == ConstantRoles.Admin)
 
         switch (selectedbutton)
         {
-
+            
             case (int)Enums.MenuOptions.CreateUser:
-                userController.CreateUser();
+                userController.CreateUser();               
                 break;
             case (int)Enums.MenuOptions.ShareStatus:
                 statusController.CreateStatus(loggedInUser);
@@ -59,6 +59,9 @@ if (loggedInUser.Role == ConstantRoles.Admin)
             case (int)Enums.MenuOptions.LogOut:
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "You looged out:");
                 goto LogInAgain;
+            case (int)Enums.MenuOptions.DeleteStatus:
+                statusController.DeleteStatus();
+                break;
             case (int)Enums.MenuOptions.LogOut2:
                 break;
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "You looged out:");

@@ -15,15 +15,15 @@ namespace Utilities.Helper
         "3 - FindAllStatuses:\n" +
         "4 - FindAllUsers:\n" +
         "5 - FindStatusByDateandUserId:\n" +
-        "6 - DeleteUser:\n" +
-        "7 - UpdateUser:\n" +
-        "8 - SerchUserByid:\n" +
-        "9 - SerchUserbyUsername:\n" +
-        "10 - SerachUserbyName:\n" +
-       "11 - CreateStatus:\n" +
-       "12 - DeleteStatus:\n" +
-       "13 - UpdateStatus:\n" +
-       "14 - SerchStatusByid\n"+
+        "6 - SerchStatusByid\n" +
+        "7 - DeleteUser:\n" +
+        "8 - UpdateUser:\n" +
+        "9 - SerchUserByid:\n" +
+        "10 - SerchUserbyUsername:\n" +
+        "11 - SerachUserbyName:\n" +
+       "12 - CreateStatus:\n" +
+       "13 - DeleteStatus:\n" +
+       "14 - UpdateStatus:\n" +      
        "15 - SerchStatusesByUserId:\n" +
        "16 - SearchStatusesByIdandDatetime:\n" +
        "17 - SerchUserStatuses:\n" +
@@ -44,7 +44,7 @@ namespace Utilities.Helper
         public const string WriteStatusId = "Please Write status Id";
         public const string WriteStatusSharedDate = "Please write date";
         public const string StatusCreated = "following Statuses Posted";
-        public const string FindStatusByDateandUserId = "Please write Status Id";
+        public const string FindStatusById = "Please write Status Id";
         public const string ListStatuses = "Following statuses exist in Database";
         public const string NoStatusInDatabase = "There is no status in Database";
 

@@ -23,6 +23,7 @@ namespace PostApp.Controllers
             userService = new UserService();
         }
 
+    
         public void CreateUser()
         {
             DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.InputName);
@@ -172,5 +173,6 @@ namespace PostApp.Controllers
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.NoStatusInDatabase);
             }
         }
+
     }
 }
