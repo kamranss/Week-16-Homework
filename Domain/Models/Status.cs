@@ -9,11 +9,11 @@ namespace Domain.Models
 {
     public class Status:BaseInterface
     {
-        public string Title { get; set; }
-        public string Content { get; set; }
+        public string? Title { get; set; }
+        public string? Content { get; set; }
         public DateTime SharedDate { get; set; }
         public TimeSpan TimePast { get; set; } = new TimeSpan(0);
-        public User User { get; set; }
+        public User? User { get; set; }
         public int? Id { get; set; }
         
 

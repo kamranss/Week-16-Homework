@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities.Exceptions;
+using Utilities.Helper;
 
 namespace Service.Services
 {
@@ -128,12 +130,13 @@ namespace Service.Services
                     }
                     return statuses;
                 }
-                return null;
+                throw new NotFoundException(ConsoleMessages.EntityNotFound);
             }
-            catch (Exception)
+            catch (NotFoundException message)
             {
 
-                throw;
+                Console.WriteLine(message.Message);
+                return null;
             }
         }
 
@@ -146,12 +149,14 @@ namespace Service.Services
                 {
                     return statuses;
                 }
-                return null;
+                throw new NotFoundException(ConsoleMessages.EntityNotFound);
+                
             }
-            catch (Exception)
+            catch (NotFoundException message)
             {
 
-                throw;
+                Console.WriteLine(message.Message);
+                return null;
             }
         }
 
@@ -196,6 +201,24 @@ namespace Service.Services
             try
             {
                 List<Status> statuses = statusRepository.GetAll(st => st.User.Id == id);
+                if (statuses != null)
+                {
+                    return statuses;
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Status> GetStatusesBySharedDateandUserid(int id, DateTime dateTime)
+        {
+            try
+            {
+                List<Status> statuses = statusRepository.GetAll(st => st.User.Id == id && st.SharedDate >dateTime);
                 if (statuses != null)
                 {
                     return statuses;

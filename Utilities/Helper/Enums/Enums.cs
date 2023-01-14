@@ -18,9 +18,11 @@ namespace Utilities.Helper.Enums
         public enum MenuOptions
         {
             CreateUser = 1,
-            CreateStatus,
+            ShareStatus,
             FindAllStatuses,
             FindAllUsers,
+            FindStatusByDateandUserId,
+            SerchStatusByid,
             DeleteUser,
             UpdateUser,
             SerchUserByid,
@@ -29,7 +31,6 @@ namespace Utilities.Helper.Enums
             ECreateStatus,
             DeleteStatus,
             UpdateStatus,
-            SerchStatusByid,
             SerchStatusesByUserId,
             SearchStatusesByIdandDatetime,          
             SerchUserStatuses,

@@ -18,6 +18,7 @@ namespace Service.Interface
         List<Status> GetAllByTitle(string title);
         List<Status> GetStatusesBySharedDate(DateTime dateTime);
         List<Status> GetStatusesByUserId(int id);
-        
+        List<Status> GetStatusesBySharedDateandUserid(int id, DateTime dateTime);
+
     }
 }

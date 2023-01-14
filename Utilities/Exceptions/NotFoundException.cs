@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Utilities.Exceptions
 {
-    public class Exceptions:Exception
+    public class NotFoundException:Exception
     {
-
-        public Exceptions(string message) :base(message)
+        public NotFoundException(string message) : base(message)
         {
-
+            
         }
     }
 }

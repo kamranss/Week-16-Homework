@@ -15,7 +15,7 @@ StatusController statusController = new StatusController();
 
 LogInAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "In oder to access system you should provide credentials:");
 User loggedInUser = loginController.LoginToSystem();
-bool whileresult = true;
+
 if (loggedInUser == null)
 {
 
@@ -26,7 +26,7 @@ if (loggedInUser == null)
 if (loggedInUser.Role == ConstantRoles.Admin)
 {
 
-
+    bool whileresult = true;
     while (whileresult)
     {
         DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkMagenta, ConsoleMessages.ChooseOption);
@@ -41,7 +41,7 @@ if (loggedInUser.Role == ConstantRoles.Admin)
             case (int)Enums.MenuOptions.CreateUser:
                 userController.CreateUser();
                 break;
-            case (int)Enums.MenuOptions.CreateStatus:
+            case (int)Enums.MenuOptions.ShareStatus:
                 statusController.CreateStatus(loggedInUser);
                 break;
             case (int)Enums.MenuOptions.FindAllStatuses:
@@ -49,6 +49,12 @@ if (loggedInUser.Role == ConstantRoles.Admin)
                 break;
             case (int)Enums.MenuOptions.FindAllUsers:
                 userController.FindAllUsers();
+                break;
+            case (int)Enums.MenuOptions.FindStatusByDateandUserId:
+                statusController.FindStatusByDateandUserId();
+                break;
+            case (int)Enums.MenuOptions.SerchStatusByid:
+                statusController.GetStatusById();
                 break;
             case (int)Enums.MenuOptions.LogOut:
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.DarkRed, "You looged out:");
@@ -70,7 +76,7 @@ if (loggedInUser.Role == ConstantRoles.Admin)
 }
 else
 {
-    Console.WriteLine("You do not have access to Datebase");
+    Console.WriteLine("You do not have access to Services");
 }
 //else if (loggedInUser.Role == ConstantRoles.User)
 //{

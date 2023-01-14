@@ -164,9 +164,12 @@ namespace PostApp.Controllers
                 DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Red, "Status Not Found");
             }
         }
-        public void GetStatusByDate()
+        /// <summary>
+        ///   FindStatusByDateandUserId should be modified
+        /// </summary>
+        public void FindStatusByDateandUserId()
         {
-            WriteStatusIdAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.WriteStatusId);
+            WriteStatusIdAgain: DefaultConsoleTemplates.ConsoleTemplate(ConsoleColor.Blue, ConsoleMessages.WriteUserId);
             string stringid = Console.ReadLine();
             int userId;
 

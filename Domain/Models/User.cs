@@ -10,16 +10,16 @@ namespace Domain.Models
 {
     public class User : BaseInterface
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public int Age { get; set; }
-        public string EmailAddress { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
+        public string? Name { get; set; } = null;
+        public string? Surname { get; set; } = null;
+        public int? Age { get; set; } = null;
+        public string? EmailAddress { get; set; } = null;
+        public string? Username { get; set; } = null;
+        public string? Password { get; set; } = null;
+        public string? Role { get; set; } = null;
 
-        public static int LoggedinCount { get; set; }
-        public int? Id { get ; set ; }
+        public static int? LoggedinCount { get; set; } = null;
+        public int? Id { get; set; } = null;
 
 
         Regex EmailRegex = new Regex(@"^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}\b");

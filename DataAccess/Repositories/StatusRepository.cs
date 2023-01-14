@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities.Exceptions;
+using Utilities.Helper;
 
 namespace DataAccess.Repositories
 {
@@ -28,14 +30,19 @@ namespace DataAccess.Repositories
         {
             try
             {
-                AppDbContext.Statuses.Remove(entity);
-                return true;
+                if (AppDbContext.Statuses.Remove(entity))
+                {
+                    return true;
+                }
+                throw new Exceptions(ConsoleMessages.SomethinWrong);
             }
-            catch (Exception)
+            catch (Exceptions message)
             {
 
-                throw;
+                Console.WriteLine(message.Message);
+                return false;
             }
+
         }
 
         public Status Get(Predicate<Status> filter = null)
@@ -74,12 +81,13 @@ namespace DataAccess.Repositories
                     foundStatus = entity;
                     return true;
                 }
-                return false;
+                throw new Exceptions(ConsoleMessages.SomethinWrong);
             }
-            catch (Exception)
+            catch (Exceptions message)
             {
 
-                throw;
+                Console.WriteLine(message.Message);
+                return false;
             }
         }
     }

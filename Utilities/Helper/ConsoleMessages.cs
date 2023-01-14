@@ -11,24 +11,25 @@ namespace Utilities.Helper
         public const string ChooseOption = "Please choose one of the option from Menu bar:\n";
         public const string OptionsForAdmin =        
         "1 - Create User:\n" +
-        "2 - ShareStatus\n:" +
+        "2 - ShareStatus:\n" +
         "3 - FindAllStatuses:\n" +
         "4 - FindAllUsers:\n" +
-        "5 - DeleteUser:\n" +
-        "6 - UpdateUser:\n" +
-        "7 - SerchUserByid:\n" +
-        "8 - SerchUserbyUsername:\n" +
-        "9 - SerachUserbyName:\n" +
-       "10 - CreateStatus:\n" +
-       "11 - DeleteStatus:\n" +
-       "12 - UpdateStatus:\n" +
-       "13 - SerchStatusByid\n"+
-       "14 - SerchStatusesByUserId:\n" +
-       "15 - SearchStatusesByIdandDatetime:\n" +
-       "16 - SerchUserStatuses:\n" +
-       "17 - SearchUserStatusesByDate:\n" +
-       "18 - LogOut:\n" +
-       "19 - Exit:";
+        "5 - FindStatusByDateandUserId:\n" +
+        "6 - DeleteUser:\n" +
+        "7 - UpdateUser:\n" +
+        "8 - SerchUserByid:\n" +
+        "9 - SerchUserbyUsername:\n" +
+        "10 - SerachUserbyName:\n" +
+       "11 - CreateStatus:\n" +
+       "12 - DeleteStatus:\n" +
+       "13 - UpdateStatus:\n" +
+       "14 - SerchStatusByid\n"+
+       "15 - SerchStatusesByUserId:\n" +
+       "16 - SearchStatusesByIdandDatetime:\n" +
+       "17 - SerchUserStatuses:\n" +
+       "18 - SearchUserStatusesByDate:\n" +
+       "19 - LogOut:\n" +
+       "20 - Exit:";
 
 
         public const string OptionsForUser=
@@ -40,29 +41,31 @@ namespace Utilities.Helper
 
         public const string WriteStatustitle = "Please Write Status Title";
         public const string WriteStatusContent = "Please Write Status Content";
+        public const string WriteStatusId = "Please Write status Id";
+        public const string WriteStatusSharedDate = "Please write date";
         public const string StatusCreated = "following Statuses Posted";
-        public const string StatusNotCreated = "Something Went Wrong: Status Not Created";
+        public const string FindStatusByDateandUserId = "Please write Status Id";
         public const string ListStatuses = "Following statuses exist in Database";
         public const string NoStatusInDatabase = "There is no status in Database";
 
-        #region Error Messages Status
+        #region Error/Notice Messages Status
         public const string TitleEmpty = " Your can not create Status without title please try again";
         public const string ContentEmpty = "Your can not create Status without Content please try again";
+        public const string SomethinWrong = "Something Went Wrong";
+        public const string StatusNotCreated = "Something Went Wrong: Status Not Created";
+        public const string FieldEmpty = "Youd cannot leave the filed blank: please tyr again";
+        public const string UserRoleWrong = "Provided Role is Wrong: Please try again";
+        public const string PasswordFaild = "the  --Password-- does not match with provided structure";
+        public const string EmailFaild = "the  --Emailadress-- does not match with provided structure";
+        public const string EntityNotFound = "Entities Not Found";
         #endregion
 
         #region Login Messages
         public const string WriteUserName = "Write ---Username--- ";
         public const string WriteUserPassword = " Write User ---Password---";
+        public const string WriteUserId = "please write user Id";
         public const string AccessGranted = "Accedd granted-> You Logged in";
         public const string AccessDenied = "Access Denied -> Please check Username and Password";
-        #endregion
-
-        #region Notice
-        public const string FieldEmpty = "Youd cannot leave the filed blank: please tyr again";
-        public const string UserRoleWrong = "Provided Role is Wrong: Please try again";
-        
-        public const string PasswordFaild = "the  --Password-- does not match with provided structure";
-        public const string EmailFaild = "the  --Emailadress-- does not match with provided structure";
         #endregion
       
         public const string PasswordStructure = 
